@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { OfflineService } from './core/services/offline.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'collaboratif-editor';
+  isOffline$ = this.offlineService.isOffline$;
+
+  constructor(private offlineService: OfflineService) {}
 }

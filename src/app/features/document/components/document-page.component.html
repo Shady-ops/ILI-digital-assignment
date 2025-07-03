@@ -1,0 +1,17 @@
+<div class="row g-0 my-3 px-2">
+  <div class="col-md-9">
+    <div class="document-wrapper">
+      <app-collaborator-cursors [collaborators]="collaborators$ | async"></app-collaborator-cursors>
+      <app-document-editor
+        [content]="content$ | async"
+        [role]="userRole$ | async"
+        (contentChange)="onContentChanged($event)"
+        (commentRequested)="onCommentRequested($event)">
+      </app-document-editor>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <app-comment-sidebar [comments]="comments$ | async"></app-comment-sidebar>
+  </div>
+</div>

@@ -1,27 +1,82 @@
-# CollaboratifEditor
+# Collaborative Document Editor (ILI Digital Frontend Assignment)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+This is a frontend for a collaborative document editor using Angular, NgRx, and Bootstrap. It features a modern layout, reactive state handling, and basic offline support.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Real-Time Editing: Multiple users can edit the same document at once.
 
-## Code scaffolding
+- Role-Based Access: Interface adapts based on user roles (Editor, Reviewer, Viewer).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Inline Comments: Add and view comments directly on selected text.
 
-## Build
+- Offline Support: Changes made offline are saved and synced when reconnected (simulated).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- User Presence Simulation: Shows avatars and cursors of 3 mock users, updating every 10 seconds.
 
-## Running unit tests
+## Setup Instructions
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Follow these steps to get the project running on your local machine.
 
-## Running end-to-end tests
+1. Clone the Repository
+git clone <your-repo-url>
+cd <repository-name>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Install Dependencies
+Use npm to install the required packages.
+npm install
 
-## Further help
+3. Run the Development Server
+ng serve
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. Open in Browser
+Navigate to http://localhost:4200/
+
+## Design Decisions
+
+Framework (Angular): Chosen for its strong structure, TypeScript support, and built-in tools like dependency injection and RxJS.
+
+State Management (NgRx): Used to centralize state, making updates predictable and easier to debug with tools like Redux DevTools.
+
+Styling (Bootstrap + SCSS): Bootstrap provided responsive layout and ready-to-use UI components, custom SCSS handled unique styles.
+
+Real-Time Simulation: Collaboration features are simulated on the frontend using RxJS timers to trigger NgRx actions.
+
+Modularity: Built with feature modules to support lazy loading, faster initial loads, and clean separation of features.
+
+## Architecture
+
+The app uses a reactive, component-based architecture powered by NgRx for managing state.
+
+## Data Flow
+
+User Interaction: A user interacts with a component.
+
+Action Dispatch: The component dispatches an NgRx action like [Document] Update Content.
+
+Offline Check: A meta-reducer checks connectivity—if offline, the action is queued.
+
+Simulation: Handle asynchronous logic simulated user activity via timers.
+
+State Update: A reducer updates the state based on the action.
+
+UI Update: Components subscribe to store selectors and reactively update the UI with new state.
+
+## State Management
+
+The app uses NgRx to manage state:
+
+AppState (root level):
+
+user: Stores role, offline status, and action queue
+
+router: Holds routing info
+
+DocumentState (lazy-loaded feature module):
+
+content: Document’s HTML content
+
+comments: List of inline comment objects
+
+collaborators: Simulated users with cursor positions
+

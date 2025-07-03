@@ -1,0 +1,13 @@
+<div class="sidebar-container">
+  <h5>Comments</h5>
+  <hr>
+  <div *ngIf="!comments?.length" class="text-muted">
+    No comments yet.
+  </div>
+  <div *ngFor="let comment of comments" class="card mb-2">
+    <div class="card-body">
+      <p class="card-text">{{ comment.text }}</p>
+      <footer class="blockquote-footer">Comment on: <em>"{{ comment.resolvesText }}"</em></footer>
+    </div>
+  </div>
+</div>

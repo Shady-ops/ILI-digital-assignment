@@ -1,0 +1,18 @@
+.sidebar-container {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  height: 100%;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+em {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: bottom;
+}

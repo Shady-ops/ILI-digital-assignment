@@ -1,0 +1,7 @@
+<div *ngFor="let user of collaborators"
+         class="collaborator-cursor"
+         [style.top.px]="user.cursorPosition.top"
+         [style.left.px]="user.cursorPosition.left"
+         [style.background-color]="user.color">
+      <span class="cursor-label">{{ user.name }}</span>
+    </div>
